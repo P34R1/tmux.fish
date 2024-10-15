@@ -8,8 +8,8 @@ function _fish_tmux_plugin_run_autostart --on-variable fish_tmux_autostart
     test -z "$VSCODE_RESOLVING_ENVIRONMENT" && \
     test "$TERM_PROGRAM" != 'vscode'
 
-        # tmux a       default   silence  if fails    new sesh    default    kill old fish (auto close when tmux closes
-        tmux attach -t default 2>/dev/null || tmux new-session -s default && kill $fish_pid
+        # tmux a          default   silent  if fail   new sesh named default    kill old fish (auto close when tmux closes)
+        tmux -u attach -t default 2>/dev/null || tmux new-session -s default && kill $fish_pid
     end
 end
 
